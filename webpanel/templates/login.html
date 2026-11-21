@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Connexion · NEXORA OS{% endblock %}
+{% block content %}
+<section class="panel login">
+  <p class="eyebrow">ESPACE SÉCURISÉ</p>
+  <h1>Connexion</h1>
+  <p>Connecte-toi avec ton compte individuel.</p>
+  <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label for="username">Nom d'utilisateur</label>
+    <input id="username" name="username" autocomplete="username" required maxlength="40">
+    <label for="password">Mot de passe</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required>
+    <button class="primary" type="submit">Se connecter</button>
+  </form>
+</section>
+{% endblock %}

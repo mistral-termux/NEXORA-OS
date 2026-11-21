@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} · NEXORA OS{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>{{ title }}</h1>
+  <p>{{ message }}</p>
+  <a href="{{ url_for('dashboard') }}">Retour au tableau de bord</a>
+</section>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}NEXORA OS{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <strong>NEXORA <span>OS</span></strong>
+    {% if g.user %}
+      <nav>
+        <a href="{{ url_for('dashboard') }}">Tableau de bord</a>
+        {% if g.user.role == 'admin' %}
+          <a href="{{ url_for('users') }}">Comptes</a>
+        {% endif %}
+        <form method="post" action="{{ url_for('logout') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit">Déconnexion</button>
+        </form>
+      </nav>
+    {% endif %}
+  </header>
+  <main>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <p class="notice {{ category }}">{{ message }}</p>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer>NEXORA OS · Accès réservé aux utilisateurs autorisés</footer>
+</body>
+</html>

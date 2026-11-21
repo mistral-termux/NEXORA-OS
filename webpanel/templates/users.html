@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Comptes · NEXORA OS{% endblock %}
+{% block content %}
+<h1>Comptes de l'équipe</h1>
+<section class="panel">
+  <h2>Créer un compte</h2>
+  <p>Utilise un mot de passe unique d'au moins 12 caractères. Communique-le au membre de manière privée.</p>
+  <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label for="username">Nom d'utilisateur</label>
+    <input id="username" name="username" required minlength="3" maxlength="40">
+    <label for="password">Mot de passe temporaire ou initial</label>
+    <input id="password" name="password" type="password" required minlength="12" autocomplete="new-password">
+    <label for="role">Rôle</label>
+    <select id="role" name="role">
+      <option value="member">Membre</option>
+      <option value="admin">Administrateur</option>
+    </select>
+    <button class="primary" type="submit">Créer le compte</button>
+  </form>
+</section>
+<section class="panel">
+  <h2>Comptes existants</h2>
+  <ul>
+  {% for account in users %}
+    <li><strong>{{ account.username }}</strong> — {{ account.role }} — créé le {{ account.created_at }}</li>
+  {% else %}
+    <li>Aucun compte.</li>
+  {% endfor %}
+  </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Tableau de bord · NEXORA OS{% endblock %}
+{% block content %}
+<p class="eyebrow">CENTRE DE CONTRÔLE</p>
+<h1>Bonjour, {{ user.username }}</h1>
+<p>Session : {{ "Administrateur" if user.role == "admin" else "Membre" }}</p>
+<div class="stats">
+  <section class="panel"><p>Observations enregistrées</p><strong>{{ observations }}</strong></section>
+  <section class="panel"><p>Rapports locaux</p><strong>{{ reports }}</strong></section>
+</div>
+<section class="panel">
+  <h2>Utilisation responsable</h2>
+  <p>Enregistre uniquement des informations publiques ou des données pour lesquelles tu disposes d'une autorisation valable. Vérifie les sources et limite les données personnelles collectées.</p>
+  {% if user.role == "admin" %}
+    <a href="{{ url_for('users') }}">Gérer les comptes de l'équipe →</a>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+# Secrets et configuration privée
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secret_key.txt
+
+# Comptes, bases de données et données locales
+data/
+*.sqlite
+*.sqlite3
+*.db
+
+# Environnement Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Journaux et rapports
+logs/
+*.log
+*_report.json
+rapport_*.txt
+observations.json
+
+# Sauvegardes
+*.backup*
+*.bak
+*.old
+
+# Éditeurs
+.vscode/
+.idea/
+
+# Secrets NEXORA supplémentaires
+.webpanel_secret
+.webpanel_secret.*
+*.secret
+
+# Fichiers temporaires accidentels
+earch\ iproute2
